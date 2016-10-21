@@ -13,14 +13,16 @@ class CitiesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     @IBOutlet weak var citiesTable: UITableView!
     
-    let items: [String] = ["Moscow", "Saint-Petersburg", "Ekaterinburg", "Kazan"]
+    var items = [String]()
     let photos: [UIImage] = [#imageLiteral(resourceName: "moscow"), #imageLiteral(resourceName: "spb"), #imageLiteral(resourceName: "ekb"), #imageLiteral(resourceName: "kazan")]
-    let forSegue: [String] = ["moscowSegue", "spbSegue", "ekbSegue", "kazanSegue"]
     let height = 170
+    let myJson = getJsonData()
+    var indetifier: Int = 0
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        items = myJson.getCityNames()
         citiesTable.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         citiesTable.rowHeight = CGFloat(height)
     }
@@ -49,25 +51,24 @@ class CitiesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         citiesTable.deselectRow(at: indexPath, animated: true)
+        indetifier = indexPath.row
         for i in 0..<items.count{
             if items[i] == citiesTable.cellForRow(at: indexPath)?.textLabel?.text{
-                performSegue(withIdentifier: forSegue[i], sender: items[i])
+                performSegue(withIdentifier: "fromCities", sender: items[i])
                 break;
             }
         }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
-        for i in 0..<forSegue.count{
             if segue.identifier == "fromCities"{
                 if let vc = segue.destination as? CategoryViewController{
                     if let title = sender as? String{
                         vc.title = title
-                        vc.city = forSegue[i].replacingOccurrences(of: "Segue", with: "")
+                        vc.city = items[indetifier]
                     }
                 }
             }
-        }
     }
     
     

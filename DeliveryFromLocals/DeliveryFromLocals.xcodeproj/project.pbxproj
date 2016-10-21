@@ -9,9 +9,9 @@
 /* Begin PBXBuildFile section */
 		21E06F1175B94F4A77CAC3EE /* Pods_DeliveryFromLocals.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA18678536CC7675E8412572 /* Pods_DeliveryFromLocals.framework */; };
 		7BEB13AF1DB92794000F79B8 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEB13AE1DB92794000F79B8 /* CategoryViewController.swift */; };
-		7BEB13B11DB92827000F79B8 /* contents.json in Resources */ = {isa = PBXBuildFile; fileRef = 7BEB13B01DB92827000F79B8 /* contents.json */; };
 		7BEB13B31DB9282D000F79B8 /* getJsonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEB13B21DB9282D000F79B8 /* getJsonData.swift */; };
 		7BEB13B51DB92921000F79B8 /* FoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEB13B41DB92921000F79B8 /* FoodViewController.swift */; };
+		7BEB13B91DBACCE8000F79B8 /* contents.json in Resources */ = {isa = PBXBuildFile; fileRef = 7BEB13B81DBACCE8000F79B8 /* contents.json */; };
 		7BEE5BFD1DB91D78000D01FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEE5BFC1DB91D78000D01FA /* AppDelegate.swift */; };
 		7BEE5C021DB91D78000D01FA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BEE5C001DB91D78000D01FA /* Main.storyboard */; };
 		7BEE5C041DB91D78000D01FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BEE5C031DB91D78000D01FA /* Assets.xcassets */; };
@@ -23,9 +23,9 @@
 		046B33E077EC148F2E85CE55 /* Pods-DeliveryFromLocals.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeliveryFromLocals.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DeliveryFromLocals/Pods-DeliveryFromLocals.debug.xcconfig"; sourceTree = "<group>"; };
 		1B9D974293192712137781C4 /* Pods-DeliveryFromLocals.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeliveryFromLocals.release.xcconfig"; path = "Pods/Target Support Files/Pods-DeliveryFromLocals/Pods-DeliveryFromLocals.release.xcconfig"; sourceTree = "<group>"; };
 		7BEB13AE1DB92794000F79B8 /* CategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
-		7BEB13B01DB92827000F79B8 /* contents.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = contents.json; sourceTree = "<group>"; };
 		7BEB13B21DB9282D000F79B8 /* getJsonData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = getJsonData.swift; sourceTree = "<group>"; };
 		7BEB13B41DB92921000F79B8 /* FoodViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodViewController.swift; sourceTree = "<group>"; };
+		7BEB13B81DBACCE8000F79B8 /* contents.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = contents.json; sourceTree = "<group>"; };
 		7BEE5BF91DB91D78000D01FA /* DeliveryFromLocals.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeliveryFromLocals.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BEE5BFC1DB91D78000D01FA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7BEE5C011DB91D78000D01FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -83,7 +83,7 @@
 				7BEB13AE1DB92794000F79B8 /* CategoryViewController.swift */,
 				7BEB13B41DB92921000F79B8 /* FoodViewController.swift */,
 				7BEB13B21DB9282D000F79B8 /* getJsonData.swift */,
-				7BEB13B01DB92827000F79B8 /* contents.json */,
+				7BEB13B81DBACCE8000F79B8 /* contents.json */,
 				7BEE5C001DB91D78000D01FA /* Main.storyboard */,
 				7BEE5C051DB91D78000D01FA /* LaunchScreen.storyboard */,
 				7BEE5C031DB91D78000D01FA /* Assets.xcassets */,
@@ -166,7 +166,7 @@
 				7BEE5C071DB91D78000D01FA /* LaunchScreen.storyboard in Resources */,
 				7BEE5C041DB91D78000D01FA /* Assets.xcassets in Resources */,
 				7BEE5C021DB91D78000D01FA /* Main.storyboard in Resources */,
-				7BEB13B11DB92827000F79B8 /* contents.json in Resources */,
+				7BEB13B91DBACCE8000F79B8 /* contents.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

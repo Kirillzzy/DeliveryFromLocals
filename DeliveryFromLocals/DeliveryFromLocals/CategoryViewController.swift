@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SwiftyJSON
 
 class CategoryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -16,12 +15,12 @@ class CategoryViewController: UIViewController, UITableViewDelegate, UITableView
     
     var items = [String]()
     let photos: [String: [UIImage]] =
-        ["moscow": [#imageLiteral(resourceName: "borch"), #imageLiteral(resourceName: "chicken"), #imageLiteral(resourceName: "kebab"), #imageLiteral(resourceName: "koruchka")],
-         "spb": [#imageLiteral(resourceName: "kotleti"), #imageLiteral(resourceName: "krasnaya_ikra"), #imageLiteral(resourceName: "kvashenya kapusta"), #imageLiteral(resourceName: "olivie")],
-         "ekb": [#imageLiteral(resourceName: "ogurchiki"), #imageLiteral(resourceName: "ovsianka"), #imageLiteral(resourceName: "pancake"), #imageLiteral(resourceName: "patato")],
-         "kazan": [#imageLiteral(resourceName: "pelmeni"), #imageLiteral(resourceName: "schi"), #imageLiteral(resourceName: "solianka"), #imageLiteral(resourceName: "seledjka_shuba")]]
+        ["Moscow": [#imageLiteral(resourceName: "borch"), #imageLiteral(resourceName: "chicken"), #imageLiteral(resourceName: "kebab"), #imageLiteral(resourceName: "koruchka")],
+         "Saint-Petersburg": [#imageLiteral(resourceName: "kotleti"), #imageLiteral(resourceName: "krasnaya_ikra"), #imageLiteral(resourceName: "kvashenya kapusta"), #imageLiteral(resourceName: "olivie")],
+         "Ekaterinburg": [#imageLiteral(resourceName: "ogurchiki"), #imageLiteral(resourceName: "ovsianka"), #imageLiteral(resourceName: "pancake"), #imageLiteral(resourceName: "patato")],
+         "Kazan": [#imageLiteral(resourceName: "pelmeni"), #imageLiteral(resourceName: "schi"), #imageLiteral(resourceName: "solianka"), #imageLiteral(resourceName: "seledjka_shuba")]]
     
-    let forSegue = ["from1Dish", "from2Dish", "from3Dish", "from4Dish"]
+    var identifier: Int = 0
     let height = 170
     let myJson = getJsonData()
     
@@ -29,7 +28,6 @@ class CategoryViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         for i in myJson.getCityNames(){
             if city == i{
                 items = myJson.getFoodNames(cityName: city)
@@ -48,9 +46,9 @@ class CategoryViewController: UIViewController, UITableViewDelegate, UITableView
         let cell: UITableViewCell = categoryTable.dequeueReusableCell(withIdentifier: "cell")! as UITableViewCell
         cell.textLabel?.text = self.items[indexPath.row]
         for i in 0..<items.count{
-            if  items[i] == cell.textLabel?.text{
+            if items[i] == cell.textLabel?.text{
                 let image: UIImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: cell.frame.width + CGFloat(height), height: cell.frame.height + CGFloat(height - 40)))
-                image.image = photos[items[i]]?[0]
+                image.image = photos[city]?[indexPath.row]
                 cell.backgroundView = UIView()
                 cell.backgroundView!.addSubview(image)
                 cell.textLabel?.textColor = UIColor.white
@@ -63,10 +61,24 @@ class CategoryViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         categoryTable.deselectRow(at: indexPath, animated: true)
+        identifier = indexPath.row
         for i in 0..<items.count{
             if items[i] == categoryTable.cellForRow(at: indexPath)?.textLabel?.text{
-                //performSegue(withIdentifier: forSegue[i], sender: items[i])
+                performSegue(withIdentifier: "fromCategory", sender: items[i])
                 break;
+            }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+        if segue.identifier == "fromCategory"{
+            if let vc = segue.destination as? FoodViewController{
+                if let title = sender as? String{
+                    vc.title = title
+                    vc.identifier = identifier
+                    vc.city = city
+                    vc.food = items[identifier]
+                }
             }
         }
     }
@@ -76,43 +88,6 @@ class CategoryViewController: UIViewController, UITableViewDelegate, UITableView
         super.viewWillAppear(animated)
     }
     
-    
-    /*override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     if segue.identifier == "from1Dish"{
-     if let vc = segue.destination as? DishViewController{
-     if let title = sender as? String{
-     vc.title = title
-     vc.numberOfDish = 1
-     //vc.imageWiew.image = firstDish.backgroundImage(for: .normal)
-     }
-     }
-     }
-     else if segue.identifier == "from2Dish"{
-     if let vc = segue.destination as? DishViewController{
-     if let title = sender as? String{
-     vc.title = title
-     vc.numberOfDish = 2
-     }
-     }
-     }
-     else if segue.identifier == "from3Dish"{
-     if let vc = segue.destination as? DishViewController{
-     if let title = sender as? String{
-     vc.title = title
-     vc.numberOfDish = 3
-     }
-     }
-     }
-     else if segue.identifier == "from4Dish"{
-     if let vc = segue.destination as? DishViewController{
-     if let title = sender as? String{
-     vc.title = title
-     vc.numberOfDish = 4
-     }
-     }
-     }
-     
-     }*/
     
     
 }
